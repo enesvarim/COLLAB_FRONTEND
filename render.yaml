@@ -3,15 +3,17 @@ services:
     name: collab-frontend
     env: static
     buildCommand: >
+      yarn config set network-timeout 1000000 &&
+      yarn config set registry https://registry.npmjs.org/ &&
       yarn add typescript@4.9.5 @babel/plugin-transform-react-jsx@^7.22.15 --dev &&
-      yarn install --update-checksums --ignore-engines &&
+      yarn install --network-concurrency 1 --prefer-offline --ignore-engines &&
       yarn run build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
         value: 18.20.2
       - key: YARN_NETWORK_TIMEOUT
-        value: 600000
+        value: 1000000
       - key: SKIP_PREFLIGHT_CHECK
         value: "true"
       - key: NPM_CONFIG_LEGACY_PEER_DEPS
