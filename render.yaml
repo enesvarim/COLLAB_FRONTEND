@@ -2,10 +2,12 @@ services:
   - type: web
     name: collab-frontend
     env: static
-    buildCommand: npm ci && npm run build
+    buildCommand: yarn install --network-timeout 300000 && yarn run build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
         value: 18.20.2
+      - key: YARN_NETWORK_TIMEOUT
+        value: 300000
       - key: NPM_CONFIG_LEGACY_PEER_DEPS
         value: "true"
