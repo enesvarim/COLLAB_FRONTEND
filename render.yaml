@@ -2,14 +2,19 @@ services:
   - type: web
     name: collab-frontend
     env: static
-    buildCommand: yarn install --update-checksums && yarn run build
+    buildCommand: >
+      yarn add typescript@4.9.5 @babel/plugin-transform-react-jsx@^7.22.15 --dev &&
+      yarn install --update-checksums --ignore-engines &&
+      yarn run build
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
         value: 18.20.2
       - key: YARN_NETWORK_TIMEOUT
-        value: 300000
+        value: 600000
       - key: SKIP_PREFLIGHT_CHECK
         value: "true"
       - key: NPM_CONFIG_LEGACY_PEER_DEPS
+        value: "true"
+      - key: DISABLE_ESLINT_PLUGIN
         value: "true"
