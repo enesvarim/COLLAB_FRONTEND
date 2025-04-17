@@ -6,6 +6,6 @@ services:
     staticPublishPath: ./build
     envVars:
       - key: NODE_VERSION
-        value: 16.20.0
+        value: 18.20.2
       - key: NPM_CONFIG_LEGACY_PEER_DEPS
         value: "true"

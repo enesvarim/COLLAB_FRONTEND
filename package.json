@@ -50,6 +50,6 @@
   },
   "proxy": "https://collab-47bg.onrender.com",
   "engines": {
-    "node": "16.x"
+    "node": ">=18.20.2"
   }
 }
